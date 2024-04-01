@@ -175,7 +175,7 @@ class BookView extends GetView<BookController> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15),
                         child: SizedBox(
-                          height: 280, // Sesuaikan tinggi container sesuai kebutuhan Anda
+                          height: 280,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: bukuList?.length,
@@ -193,7 +193,7 @@ class BookView extends GetView<BookController> {
                                     );
                                   },
                                   child: Container(
-                                    width: 140,
+                                    width: 150,
                                     decoration: BoxDecoration(
                                         border: Border.all(
                                           color: Colors.black.withOpacity(0.15),  // Warna garis
@@ -208,7 +208,7 @@ class BookView extends GetView<BookController> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           SizedBox(
-                                            width: 140,
+                                            width: 150,
                                             height: 185,
                                             child: ClipRRect(
                                               borderRadius: BorderRadius.circular(5),
@@ -236,7 +236,7 @@ class BookView extends GetView<BookController> {
                                                       color: Colors.black,
                                                       fontSize: 16.0
                                                   ),
-                                                  textAlign: TextAlign.center,
+                                                  textAlign: TextAlign.start,
                                                   maxLines: 1,
                                                   overflow: TextOverflow.ellipsis,
                                                 ),
