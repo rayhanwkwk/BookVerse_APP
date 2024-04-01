@@ -5,9 +5,10 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rayhan_bookverse/app/data/model/response_book.dart';
 
 import '../../../components/custom_textfield.dart';
+import '../../../data/model/response_book.dart';
+import '../../../routes/app_pages.dart';
 import '../controllers/book_controller.dart';
 
 class BookView extends GetView<BookController> {
@@ -16,9 +17,7 @@ class BookView extends GetView<BookController> {
   Widget build(BuildContext context) {
 
     // Color
-    const Color primary = Color (0xFFFD5B35);
     const Color textColor = Color (0xFFFAFAFA);
-    const Color textDeskripsi = Color (0xFF818181);
     const Color colorButton = Color (0xFF121212);
 
     // Size
@@ -26,10 +25,7 @@ class BookView extends GetView<BookController> {
     double height = MediaQuery.of(context).size.height;
 
     // Size Text
-    double h1 = 35.0;
-    double h3 = 20.0;
     double text = 18.0;
-    double text2 = 16.0;
     // double text3 = 14.0;
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark.copyWith(
@@ -157,7 +153,7 @@ class BookView extends GetView<BookController> {
                 itemCount: state.length,
                 itemBuilder: (context, index){
                   var kategori = state[index].kategoriBuku;
-                  var bukuList = state[index].buku;
+                  var bukuList = state[index].dataBuku;
                   return Column(
                     children: [
                       Padding(
@@ -184,130 +180,134 @@ class BookView extends GetView<BookController> {
                             scrollDirection: Axis.horizontal,
                             itemCount: bukuList?.length,
                             itemBuilder: (context, index) {
-                              Buku buku = bukuList![index];
+                              DataBuku buku = bukuList![index];
                               return Padding(
                                 padding: const EdgeInsets.only(right: 10.0),
-                                child: Container(
-                                  width: 135,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.black.withOpacity(0.15),  // Warna garis
-                                        width: 0.5,           // Lebar garis
-                                      ),
-                                      borderRadius: BorderRadius.circular(10),
-                                    color: const Color(0xFFFAFAFA)
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: 130, // Sesuaikan lebar gambar sesuai kebutuhan Anda
-                                          height: 175, // Sesuaikan tinggi gambar sesuai kebutuhan Anda
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.circular(5),
-                                            child: AspectRatio(
-                                              aspectRatio: 4 / 5,
-                                              child: Image.network(
-                                                buku.coverBuku.toString(),
-                                                fit: BoxFit.cover,
+                                child: InkWell(
+                                  onTap: (){
+                                    Get.toNamed(Routes.DETAILBOOK,
+                                      parameters: {
+                                        'id': (buku.bukuID ?? 0).toString(),
+                                        'judul': (buku.judul!).toString()
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 140,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.black.withOpacity(0.15),  // Warna garis
+                                          width: 0.5,           // Lebar garis
+                                        ),
+                                        borderRadius: BorderRadius.circular(10),
+                                      color: const Color(0xFFFAFAFA)
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          SizedBox(
+                                            width: 140,
+                                            height: 185,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(5),
+                                              child: AspectRatio(
+                                                aspectRatio: 4 / 5,
+                                                child: Image.network(
+                                                  buku.coverBuku.toString(),
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        FittedBox(
-                                          child: Text(
-                                            buku.judul!,
-                                            style: GoogleFonts.plusJakartaSans(
-                                                fontWeight: FontWeight.w800,
-                                                color: Colors.black,
-                                                fontSize: 16.0
+
+                                          const SizedBox(height: 8),
+
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  buku.judul!,
+                                                  style: GoogleFonts.plusJakartaSans(
+                                                      fontWeight: FontWeight.w800,
+                                                      color: Colors.black,
+                                                      fontSize: 16.0
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 1,
+                                                  overflow: TextOverflow.ellipsis,
+                                                ),
+
+                                                const SizedBox(height: 4),
+
+                                                FittedBox(
+                                                  child: Text(
+                                                    buku.penulis!,
+                                                    style: GoogleFonts.plusJakartaSans(
+                                                        fontWeight: FontWeight.w600,
+                                                        color: Colors.black,
+                                                        fontSize: 10.0
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(height: 4),
+
+                                                FittedBox(
+                                                  child: Text(
+                                                    "${buku.jumlahHalaman!} Halaman",
+                                                    style: GoogleFonts.plusJakartaSans(
+                                                        fontWeight: FontWeight.w600,
+                                                        color: Colors.black,
+                                                        fontSize: 10.0
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+
+                                                const SizedBox(height: 3),
+
+                                                // Menampilkan rating di bawah teks penulis
+                                                buku.rating != null && buku.rating! > 0
+                                                    ? RatingBar.builder(
+                                                  initialRating: buku.rating!,
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 15,
+                                                  itemBuilder: (context, _) => const Icon(
+                                                    Icons.star,
+                                                    color: primary,
+                                                  ),
+                                                  onRatingUpdate: (rating) {
+                                                    // Lakukan tindakan setelah pengguna mengupdate rating
+                                                  },
+                                                )
+                                                    : RatingBar.builder(
+                                                  initialRating: 5,
+                                                  minRating: 1,
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 15,
+                                                  itemBuilder: (context, _) => const Icon(
+                                                    Icons.star,
+                                                    color: Colors.grey,
+                                                  ),
+                                                  onRatingUpdate: (rating) {
+                                                    // Lakukan tindakan setelah pengguna mengupdate rating
+                                                  },
+                                                ),
+                                              ],
                                             ),
-                                            textAlign: TextAlign.center,
                                           ),
-                                        ),
-
-                                        const SizedBox(height: 4),
-
-                                        FittedBox(
-                                          child: Text(
-                                            buku.penulis!,
-                                            style: GoogleFonts.plusJakartaSans(
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black,
-                                                fontSize: 10.0
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-
-                                        const SizedBox(height: 4),
-
-                                        FittedBox(
-                                          child: Text(
-                                            buku.penerbit!,
-                                            style: GoogleFonts.inter(
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black,
-                                                fontSize: 10.0
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-
-                                        const SizedBox(height: 2),
-
-                                        FittedBox(
-                                          child: Text(
-                                            "${buku.jumlahHalaman!} Halaman",
-                                            style: GoogleFonts.plusJakartaSans(
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.black,
-                                                fontSize: 10.0
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          ),
-                                        ),
-
-                                        const SizedBox(height: 3),
-
-                                        // Menampilkan rating di bawah teks penulis
-                                        buku.rating != null && buku.rating! > 0
-                                            ? RatingBar.builder(
-                                          initialRating: buku.rating!,
-                                          minRating: 1,
-                                          direction: Axis.horizontal,
-                                          allowHalfRating: true,
-                                          itemCount: 5,
-                                          itemSize: 15,
-                                          itemBuilder: (context, _) => const Icon(
-                                            Icons.star,
-                                            color: primary,
-                                          ),
-                                          onRatingUpdate: (rating) {
-                                            print(rating);
-                                            // Lakukan tindakan setelah pengguna mengupdate rating
-                                          },
-                                        )
-                                            : RatingBar.builder(
-                                          initialRating: 5,
-                                          minRating: 1,
-                                          direction: Axis.horizontal,
-                                          allowHalfRating: true,
-                                          itemCount: 5,
-                                          itemSize: 15,
-                                          itemBuilder: (context, _) => const Icon(
-                                            Icons.star,
-                                            color: Colors.grey,
-                                          ),
-                                          onRatingUpdate: (rating) {
-                                            print(rating);
-                                            // Lakukan tindakan setelah pengguna mengupdate rating
-                                          },
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

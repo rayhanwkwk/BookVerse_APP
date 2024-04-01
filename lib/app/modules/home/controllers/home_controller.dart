@@ -12,8 +12,8 @@ import '../../../data/provider/api_provider.dart';
 class HomeController extends GetxController with StateMixin {
 
   // Get Book
-  var newBooks = Rxn<List<DataBookNew>>();
-  var popularBooks = Rxn<List<DataPopularBook>>();
+  var newBooks = RxList<DataBookNew>();
+  var popularBooks = RxList<DataPopularBook>();
 
   late AnimationController animationController;
   final textList = [
@@ -60,10 +60,12 @@ class HomeController extends GetxController with StateMixin {
         final ResponsePopularBook responseBukuPopular = ResponsePopularBook.fromJson(responsePopular.data);
 
         if (responseBukuNew.data!.isEmpty && responseBukuPopular.data!.isEmpty) {
+          newBooks.clear();
+          popularBooks.clear();
           change(null, status: RxStatus.empty());
         } else {
-          newBooks(responseBukuNew.data!);
-          popularBooks(responseBukuPopular.data!);
+          newBooks.assignAll(responseBukuNew.data!);
+          popularBooks.assignAll(responseBukuPopular.data!);
           change(null, status: RxStatus.success());
         }
       } else {

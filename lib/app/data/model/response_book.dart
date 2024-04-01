@@ -1,6 +1,6 @@
 /// Status : 200
-/// Message : "Berhasil Menampilkan All Buku"
-/// data : [{"KategoriBuku":"Novel Romance","Buku":[{"BukuID":1,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Wind Breaker.png","Judul":"Wind Breaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":2,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":3,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Taiko.png","Judul":"Taiko","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4,"Total_ulasan":2,"JumlahRating":8,"JumlahPeminjam":0},{"BukuID":4,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tensura.png","Judul":"Tensura","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0}]},{"KategoriBuku":"Novel Fantasy","Buku":[{"BukuID":1,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Wind Breaker.png","Judul":"Wind Breaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":2,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":3,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Taiko.png","Judul":"Taiko","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4,"Total_ulasan":2,"JumlahRating":8,"JumlahPeminjam":0},{"BukuID":4,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tensura.png","Judul":"Tensura","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0}]},{"KategoriBuku":"Novel Non Fiksi","Buku":[{"BukuID":5,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Ki Hajar Dewantara.png","Judul":"Ki Hajar Dewantara","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0},{"BukuID":6,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/London Bridge.png","Judul":"London Bridge","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":7,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Revolusi France.png","Judul":"Revolusi France","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0},{"BukuID":8,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Adolf Hitler.png","Judul":"Adolf Hitler","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":9,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Aspera Ad Astra.png","Judul":"Aspera Ad Astra","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4,"Total_ulasan":1,"JumlahRating":4,"JumlahPeminjam":0}]}]
+/// Message : "Berhasil menampilkan data semua buku"
+/// data : [{"KategoriBuku":"Novel Fantasy","DataBuku":[{"BukuID":5,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/WindBreaker.png","Judul":"WindBreaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":6,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":7,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Taiko.png","Judul":"Taiko","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":8,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Naruto Story.png","Judul":"Naruto Story","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":9,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tomb Raider King.png","Judul":"Tomb Raider King","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0,"Status":"Popular"}]},{"KategoriBuku":"Novel Romance","DataBuku":[{"BukuID":5,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/WindBreaker.png","Judul":"WindBreaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":6,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":8,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Naruto Story.png","Judul":"Naruto Story","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":9,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tomb Raider King.png","Judul":"Tomb Raider King","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0,"Status":"Popular"},{"BukuID":10,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Jujutsu Kaisen.png","Judul":"Jujutsu Kaisen","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":2,"JumlahRating":10,"JumlahPeminjam":1,"Status":"Popular"}]},{"KategoriBuku":"Novel Non Fiksi","DataBuku":[{"BukuID":1,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Buya Hamka.png","Judul":"Buya Hamka","Penulis":"A Fuadi","Penerbit":"Gramedia Center","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":2,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Ki Hajar Dewantara.png","Judul":"Ki Hajar Dewantara","Penulis":"A Fuadi","Penerbit":"Gramedia Center","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":3,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/SOEKARNO.png","Judul":"SOEKARNO","Penulis":"Taufik Adi Susilo","Penerbit":"Gramedia Center","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":1,"Status":"Tidak Populer"},{"BukuID":4,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Muhammad Hatta.png","Judul":"Muhammad Hatta","Penulis":"Salman Alfarizi","Penerbit":"Gramedia Center","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":2,"Status":"Tidak Populer"}]}]
 
 class ResponseBook {
   ResponseBook({
@@ -34,40 +34,40 @@ class ResponseBook {
 
 }
 
-/// KategoriBuku : "Novel Romance"
-/// Buku : [{"BukuID":1,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Wind Breaker.png","Judul":"Wind Breaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":2,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":0},{"BukuID":3,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Taiko.png","Judul":"Taiko","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4,"Total_ulasan":2,"JumlahRating":8,"JumlahPeminjam":0},{"BukuID":4,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tensura.png","Judul":"Tensura","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0}]
+/// KategoriBuku : "Novel Fantasy"
+/// DataBuku : [{"BukuID":5,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/WindBreaker.png","Judul":"WindBreaker","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":6,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/OverLord.png","Judul":"OverLord","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":7,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Taiko.png","Judul":"Taiko","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":0,"Total_ulasan":0,"JumlahRating":0,"JumlahPeminjam":0,"Status":"Tidak Populer"},{"BukuID":8,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Naruto Story.png","Judul":"Naruto Story","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":5,"Total_ulasan":1,"JumlahRating":5,"JumlahPeminjam":1,"Status":"Popular"},{"BukuID":9,"CoverBuku":"http://192.168.43.21:8000/storage/images/coverbook/Tomb Raider King.png","Judul":"Tomb Raider King","Penulis":"Syoung Youn Kwon","Penerbit":"Naver Webtoon","TahunTerbit":"2013","JumlahHalaman":"438","Rating":4.5,"Total_ulasan":2,"JumlahRating":9,"JumlahPeminjam":0,"Status":"Popular"}]
 
 class DataBook {
   DataBook({
       this.kategoriBuku, 
-      this.buku,});
+      this.dataBuku,});
 
   DataBook.fromJson(dynamic json) {
     kategoriBuku = json['KategoriBuku'];
-    if (json['Buku'] != null) {
-      buku = [];
-      json['Buku'].forEach((v) {
-        buku?.add(Buku.fromJson(v));
+    if (json['DataBuku'] != null) {
+      dataBuku = [];
+      json['DataBuku'].forEach((v) {
+        dataBuku?.add(DataBuku.fromJson(v));
       });
     }
   }
   String? kategoriBuku;
-  List<Buku>? buku;
+  List<DataBuku>? dataBuku;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['KategoriBuku'] = kategoriBuku;
-    if (buku != null) {
-      map['Buku'] = buku?.map((v) => v.toJson()).toList();
+    if (dataBuku != null) {
+      map['DataBuku'] = dataBuku?.map((v) => v.toJson()).toList();
     }
     return map;
   }
 
 }
 
-/// BukuID : 1
-/// CoverBuku : "http://192.168.43.21:8000/storage/images/coverbook/Wind Breaker.png"
-/// Judul : "Wind Breaker"
+/// BukuID : 5
+/// CoverBuku : "http://192.168.43.21:8000/storage/images/coverbook/WindBreaker.png"
+/// Judul : "WindBreaker"
 /// Penulis : "Syoung Youn Kwon"
 /// Penerbit : "Naver Webtoon"
 /// TahunTerbit : "2013"
@@ -75,10 +75,11 @@ class DataBook {
 /// Rating : 5
 /// Total_ulasan : 1
 /// JumlahRating : 5
-/// JumlahPeminjam : 0
+/// JumlahPeminjam : 1
+/// Status : "Popular"
 
-class Buku {
-  Buku({
+class DataBuku {
+  DataBuku({
       this.bukuID, 
       this.coverBuku, 
       this.judul, 
@@ -89,9 +90,10 @@ class Buku {
       this.rating, 
       this.totalUlasan, 
       this.jumlahRating, 
-      this.jumlahPeminjam,});
+      this.jumlahPeminjam, 
+      this.status,});
 
-  Buku.fromJson(dynamic json) {
+  DataBuku.fromJson(dynamic json) {
     bukuID = json['BukuID'];
     coverBuku = json['CoverBuku'];
     judul = json['Judul'];
@@ -103,6 +105,7 @@ class Buku {
     totalUlasan = json['Total_ulasan'];
     jumlahRating = json['JumlahRating'];
     jumlahPeminjam = json['JumlahPeminjam'];
+    status = json['Status'];
   }
   int? bukuID;
   String? coverBuku;
@@ -115,6 +118,7 @@ class Buku {
   int? totalUlasan;
   int? jumlahRating;
   int? jumlahPeminjam;
+  String? status;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -129,6 +133,7 @@ class Buku {
     map['Total_ulasan'] = totalUlasan;
     map['JumlahRating'] = jumlahRating;
     map['JumlahPeminjam'] = jumlahPeminjam;
+    map['Status'] = status;
     return map;
   }
 

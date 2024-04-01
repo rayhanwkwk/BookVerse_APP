@@ -22,21 +22,21 @@ class CustomNavigationBar extends StatelessWidget {
           return NavigationDestination(
             icon: Icon(
               _icons[index],
-              color: isSelected ? Colors.white : background, // Dynamic color
+              color: isSelected ? primary : Colors.white, // Dynamic color
             ),
             label: _labels[index],
           );
         }),
       ],
-      backgroundColor: colorUnSelect,
+      backgroundColor: background,
       selectedIndex: currentIndex,
       onDestinationSelected: onTap,
-      indicatorColor: primary,
+      indicatorColor: colorUnSelect,
       elevation: 0,
       height: 65.0,
       animationDuration: const Duration(milliseconds: 500),
       surfaceTintColor: Colors.white,
-      labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
     );
   }
 }

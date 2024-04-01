@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:rayhan_bookverse/app/components/custom_ListAuthor.dart';
 import 'package:rayhan_bookverse/app/data/provider/storage_provider.dart';
 
+import '../../../routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -27,9 +28,7 @@ class HomeView extends GetView<HomeController> {
 
     // Size Text
     double h1 = 35.0;
-    double h3 = 20.0;
     double text = 18.0;
-    double text2 = 16.0;
     // double text3 = 14.0;
 
     // Get Data User
@@ -302,17 +301,8 @@ class HomeView extends GetView<HomeController> {
           height: 20,
         ),
 
-        GetBuilder<HomeController>(
-          builder: (controller) {
-            if (controller.popularBooks.isNull) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation<Color>(primary),
-                ),
-              );
-            } else if (controller.popularBooks.value == null) {
+        Obx((){
+            if (controller.popularBooks.isEmpty) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: Colors.black,
@@ -322,91 +312,102 @@ class HomeView extends GetView<HomeController> {
               );
             } else {
               return SizedBox(
-                height: 240,
+                height: 265,
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: controller.popularBooks.value!.length,
+                    itemCount: controller.popularBooks.length,
                     itemBuilder: (context, index) {
-                      var buku = controller.popularBooks.value![index];
+                      var buku = controller.popularBooks[index];
                       return InkWell(
                         onTap: () {
+                          Get.toNamed(Routes.DETAILBOOK,
+                            parameters: {
+                              'id': (buku.bukuID ?? 0).toString(),
+                              'judul': (buku.judul!).toString()
+                            },
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 120,
-                                height: 175,
-                                decoration : BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.black.withOpacity(0.20), // Warna garis tepi
-                                    width: 1, // Lebar garis tepi
+                          child: Container(
+                            width: 140,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 140,
+                                  height: 185,
+                                  decoration : BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.black.withOpacity(0.20), // Warna garis tepi
+                                      width: 1, // Lebar garis tepi
+                                    ),
+                                    borderRadius: BorderRadius.circular(15)
                                   ),
-                                  borderRadius: BorderRadius.circular(15)
-                                ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: AspectRatio(
-                                    aspectRatio: 4 / 5,
-                                    child: Image.network(
-                                      buku.coverBuku.toString(),
-                                      fit: BoxFit.cover,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: AspectRatio(
+                                      aspectRatio: 4 / 5,
+                                      child: Image.network(
+                                        buku.coverBuku.toString(),
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
 
-                              const SizedBox(height: 10),
+                                const SizedBox(height: 10),
 
-                              FittedBox(
-                                child: Text(
+                                Text(
                                   buku.judul!,
                                   style: GoogleFonts.plusJakartaSans(
                                       fontWeight: FontWeight.w800,
                                       color: Colors.black,
                                       fontSize: 14.0
                                   ),
-                                  textAlign: TextAlign.center,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.start,
                                 ),
-                              ),
 
-                              FittedBox(
-                                child: Text(
-                                  buku.penulis!,
-                                  maxLines: 1,
-                                  style: GoogleFonts.plusJakartaSans(
-                                      fontWeight: FontWeight.w600,
-                                      color: textColor,
-                                      fontSize: 10.0
+                                const SizedBox(height: 3),
+
+                                FittedBox(
+                                  child: Text(
+                                    buku.penulis!,
+                                    maxLines: 1,
+                                    style: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.w600,
+                                        color: textColor,
+                                        fontSize: 10.0
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
-                                  textAlign: TextAlign.center,
                                 ),
-                              ),
 
-                              const SizedBox(height: 5),
+                                const SizedBox(height: 3),
 
-                              RatingBar.builder(
-                                initialRating: buku.rating!,
-                                minRating: 1,
-                                direction: Axis.horizontal,
-                                allowHalfRating: true,
-                                itemCount: 5,
-                                itemSize: 15,
-                                itemBuilder: (context, _) => const Icon(
-                                  Icons.star,
-                                  color: primary,
+                                RatingBar.builder(
+                                  initialRating: buku.rating!,
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 15,
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: primary,
+                                  ),
+                                  onRatingUpdate: (rating) {
+
+                                  }
                                 ),
-                                onRatingUpdate: (rating) {
-
-                                }
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -527,17 +528,8 @@ class HomeView extends GetView<HomeController> {
           height: 20,
         ),
 
-        GetBuilder<HomeController>(
-          builder: (controller) {
-            if (controller.newBooks.isNull) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.black,
-                  backgroundColor: Colors.grey,
-                  valueColor: AlwaysStoppedAnimation<Color>(primary),
-                ),
-              );
-            } else if (controller.newBooks.value == null) {
+        Obx((){
+            if (controller.newBooks.isEmpty) {
               return const Center(
                 child: CircularProgressIndicator(
                   color: Colors.black,
@@ -550,12 +542,17 @@ class HomeView extends GetView<HomeController> {
                 scrollDirection: Axis.vertical,
                 child: Column(
                   children: List.generate(
-                    controller.newBooks.value!.length,
+                    controller.newBooks.length,
                         (index) {
-                      var buku = controller.newBooks.value![index];
+                      var buku = controller.newBooks[index];
                       return InkWell(
                         onTap: () {
-                          // Implementasi logika ketika buku ditekan
+                          Get.toNamed(Routes.DETAILBOOK,
+                            parameters: {
+                              'id': (buku.bukuID ?? 0).toString(),
+                              'judul': (buku.judulBuku!).toString()
+                            },
+                          );
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10),
@@ -628,6 +625,7 @@ class HomeView extends GetView<HomeController> {
                                             fontSize: 12.0,
                                           ),
                                           maxLines: 5,
+                                          textAlign: TextAlign.justify,
                                           overflow: TextOverflow.ellipsis,
                                         ),
                                         Text(
