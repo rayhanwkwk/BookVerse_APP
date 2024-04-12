@@ -9,12 +9,14 @@ class CustomTextField extends StatelessWidget {
   final Widget? preffixIcon;
   final Widget? suffixIcon;
   final FormFieldValidator<String>? validator;
+  final ValueChanged<String>? onChanged;
 
   const CustomTextField({
     super.key,
     required this.controller,
     required this.hintText,
     required this.obsureText,
+    required this.onChanged,
     required this.preffixIcon,
     this.suffixIcon,
     required this.validator,
@@ -33,6 +35,7 @@ class CustomTextField extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: background
       ),
+      onChanged: onChanged,
       decoration: InputDecoration(
         prefixIcon: preffixIcon,
         suffixIcon: suffixIcon,

@@ -8,6 +8,8 @@ import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
 import '../modules/detailbook/bindings/detailbook_binding.dart';
 import '../modules/detailbook/views/detailbook_view.dart';
+import '../modules/historypeminjaman/bindings/historypeminjaman_binding.dart';
+import '../modules/historypeminjaman/views/historypeminjaman_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.DETAILBOOK,
       page: () => const DetailbookView(),
       binding: DetailbookBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORYPEMINJAMAN,
+      page: () => const HistorypeminjamanView(),
+      binding: HistorypeminjamanBinding(),
     ),
   ];
 }

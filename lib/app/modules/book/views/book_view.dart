@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../components/custom_textfield.dart';
-import '../../../data/model/response_book.dart';
+import '../../../data/model/buku/response_search_buku.dart';
 import '../../../routes/app_pages.dart';
 import '../controllers/book_controller.dart';
 
@@ -97,12 +97,15 @@ class BookView extends GetView<BookController> {
 
                 CustomTextField(
                   controller: controller.searchController,
+                  onChanged: (value){
+                    controller.getDataBook();
+                  },
                   hintText: 'Search Book Here',
                   obsureText: false,
                   preffixIcon: const Icon(Icons.search_rounded),
                   validator:  (value) {
-                    if (value!.isEmpty) {
-                      return 'Pleasse input karakter here';
+                    if(value!.isEmpty){
+                      return 'Masukan karakter searh buku';
                     }
                     return null;
                   },
@@ -113,8 +116,7 @@ class BookView extends GetView<BookController> {
                   height: height * 0.020,
                 ),
 
-                sectionDataBook(),
-
+                 sectionDataBook(),
               ],
             ),
           ),
@@ -154,6 +156,47 @@ class BookView extends GetView<BookController> {
                 itemBuilder: (context, index){
                   var kategori = state[index].kategoriBuku;
                   var bukuList = state[index].dataBuku;
+                  if (bukuList == null || bukuList.isEmpty) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            kategori!,
+                            style: GoogleFonts.plusJakartaSans(
+                              fontSize: 18.0,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20),
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF121212),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Buku ${controller.searchController.text} tidak ditemukan di kategori ini',
+                                style: GoogleFonts.plusJakartaSans(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: -0.3,
+                                  fontSize: 16,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  }
                   return Column(
                     children: [
                       Padding(
@@ -324,6 +367,30 @@ class BookView extends GetView<BookController> {
           }
           )
         ],
+      ),
+    );
+  }
+
+  Widget sectionDataKosong(String text) {
+    const Color background = Color(0xFF000000);
+    return Center(
+      child: Container(
+        height: 50,
+        decoration: BoxDecoration(
+          color: background,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Text(
+            'Sorry Data $text Empty!',
+            style: GoogleFonts.plusJakartaSans(
+              color: Colors.white,
+              fontWeight: FontWeight.w600,
+              fontSize: 16,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

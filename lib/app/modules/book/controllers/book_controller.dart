@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../data/constant/endpoint.dart';
-import '../../../data/model/response_book.dart';
+import '../../../data/model/buku/response_search_buku.dart';
 import '../../../data/provider/api_provider.dart';
 
-class BookController extends GetxController with StateMixin<List<DataBook>> {
+class BookController extends GetxController  with StateMixin<List<DataSearch>>{
 
   final TextEditingController searchController = TextEditingController();
 
@@ -29,12 +29,18 @@ class BookController extends GetxController with StateMixin<List<DataBook>> {
   // Get Data Buku
   Future<void> getDataBook() async{
     change(null, status: RxStatus.loading());
-
     try {
+      final keyword = searchController.text.toString();
+      final response;
 
-      final response = await ApiProvider.instance().get(Endpoint.buku,);
+      if (keyword == ''){
+        response = await ApiProvider.instance().get('${Endpoint.searchBook}/null');
+      }else{
+        response = await ApiProvider.instance().get('${Endpoint.searchBook}/$keyword');
+      }
+
       if (response.statusCode == 200) {
-        final ResponseBook responseBuku = ResponseBook.fromJson(response.data);
+        final ResponseSearchBuku responseBuku = ResponseSearchBuku.fromJson(response.data);
         if(responseBuku.data!.isEmpty){
           change(null, status: RxStatus.empty());
         }else{

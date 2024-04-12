@@ -17,7 +17,7 @@ class CustomNavigationBar extends StatelessWidget {
     const Color colorUnSelect = Color(0xFFF6F6F6);
     return NavigationBar(
       destinations: [
-        ...List.generate(4, (index) {
+        ...List.generate(5, (index) {
           final isSelected = index == currentIndex;
           return NavigationDestination(
             icon: Icon(
@@ -45,6 +45,7 @@ const _icons = [
   Icons.house_rounded,
   Icons.book_rounded,
   Icons.bookmarks,
+  Icons.history_edu_rounded,
   Icons.person_rounded,
 ];
 
@@ -52,5 +53,6 @@ const _labels = [
   'Home',
   'Boook',
   'Bookmarks',
+  'History',
   'Profile',
 ];

@@ -95,6 +95,9 @@ class RegisterView extends GetView<RegisterController> {
                         CustomTextField(
                           controller: controller.usernameController,
                           hintText: 'Book Verse',
+                          onChanged: (value){
+
+                          },
                           obsureText: false,
                           preffixIcon: const Icon(Icons.email),
                           validator:  (value) {
@@ -125,6 +128,9 @@ class RegisterView extends GetView<RegisterController> {
                         CustomTextField(
                           controller: controller.emailController,
                           hintText: 'bookverse@smk.belajar.id',
+                          onChanged: (value){
+
+                          },
                           obsureText: false,
                           preffixIcon: const Icon(Icons.email),
                           validator:  (value) {
@@ -161,6 +167,9 @@ class RegisterView extends GetView<RegisterController> {
                             CustomTextField(
                               controller: controller.passwordController,
                               hintText: 'bookverse@smk.belajar.id',
+                              onChanged: (value){
+
+                              },
                               obsureText: controller.isPasswordHidden.value,
                               preffixIcon: const Icon(Icons.lock),
                               suffixIcon: InkWell(
