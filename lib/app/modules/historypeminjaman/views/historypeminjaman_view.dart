@@ -163,7 +163,7 @@ class HistorypeminjamanView extends GetView<HistorypeminjamanController> {
                       style: GoogleFonts.plusJakartaSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 18,
+                        fontSize: 16
                       ),
                     ),
                   ),
@@ -179,12 +179,11 @@ class HistorypeminjamanView extends GetView<HistorypeminjamanController> {
                     var buku = controller.historyPeminjaman[index];
                     return InkWell(
                       onTap: () {
-                        Get.toNamed(Routes.DETAILBOOK,
-                          parameters: {
-                            'id': (buku.bukuId ?? 0).toString(),
-                            'judul': (buku.judulBuku!).toString()
-                          },
-                        );
+                        buku.status == 'Selesai' ? controller.kontenBeriUlasan(buku.bukuId.toString(), buku.judulBuku.toString()) :
+                        Get.toNamed(Routes.BUKTIPEMINJAMAN, parameters: {
+                          'idPeminjaman': buku.peminjamanID.toString(),
+                          'asalHalaman' : 'historyPeminjaman',
+                        });
                       },
                       child: Padding(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -234,16 +233,16 @@ class HistorypeminjamanView extends GetView<HistorypeminjamanController> {
                                         bottom: 0,
                                         child: Container(
                                           decoration: BoxDecoration(
-                                              color: Colors.black.withOpacity(0.95),
+                                              color: const Color(0xFFFD5B35),
                                               borderRadius: BorderRadius.circular(5)
                                           ),
                                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                           child: Text(
                                             buku.status!,
                                             style: GoogleFonts.plusJakartaSans(
-                                                color: const Color(0xFFFD5B35),
+                                                color: Colors.white,
                                                 fontWeight: FontWeight.w700,
-                                                fontSize: 12
+                                                fontSize: 14
                                             ),
                                           ),
                                         ),

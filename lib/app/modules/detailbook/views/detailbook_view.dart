@@ -5,8 +5,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rayhan_bookverse/app/data/model/buku/response_detail_buku.dart';
 
-import '../../../data/model/response_detail_book.dart';
 import '../controllers/detailbook_controller.dart';
 
 class DetailbookView extends GetView<DetailbookController> {
@@ -94,31 +94,40 @@ class DetailbookView extends GetView<DetailbookController> {
                 right: 0,
                 child: Container(
                   color: const Color(0xFFF5F5F5),
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                    child: SizedBox(
-                        height: 50.0,
-                        width: double.infinity,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFFFD5B35),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                    BorderRadius.circular(
-                                        100))),
-                            onPressed: () {
+                  child: Obx((){
+                    var dataBuku = controller.dataDetailBook.value?.buku;
 
-                            },
-                            child: Text(
-                              "Pinjam Buku",
-                              style: GoogleFonts.inter(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                            )
-                        )
-                    ),
-                  ),
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                      child: SizedBox(
+                          height: 50.0,
+                          width: double.infinity,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFFFD5B35),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(
+                                          10))),
+                              onPressed: () {
+                                if (dataBuku?.statusPeminjaman == 'Belum dipinjam') {
+                                  controller.showConfirmPeminjaman(() => Navigator.pop(Get.context!, 'OK'), 'Lanjutkan');
+                                }else if(dataBuku?.statusPeminjaman == 'Dipinjam'){
+                                  return;
+                                }
+                              },
+                              child: Text(
+                                dataBuku?.statusPeminjaman == 'Belum dipinjam'
+                                    ? 'Pinjam Buku' : 'Dipinjam',
+                                style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              )
+                          )
+                      ),
+                    );
+                  })
                 ),
               )
             ],
@@ -259,7 +268,7 @@ class DetailbookView extends GetView<DetailbookController> {
                                       child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(100)
+                                              borderRadius: BorderRadius.circular(10)
                                           ),
                                           backgroundColor: const Color(0xFFFD5B35),
                                         ),

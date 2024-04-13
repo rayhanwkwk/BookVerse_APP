@@ -9,6 +9,7 @@ import 'package:rayhan_bookverse/app/components/custom_ListAuthor.dart';
 import 'package:rayhan_bookverse/app/data/provider/storage_provider.dart';
 
 import '../../../routes/app_pages.dart';
+import '../../dashboard/controllers/dashboard_controller.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -175,63 +176,68 @@ class HomeView extends GetView<HomeController> {
   Widget sectionImage(){
     // Size
     double width = MediaQuery.of(Get.context!).size.width;
-    return Container(
-      width: width,
-      height: 115,
-      decoration: const BoxDecoration(
-        image:  DecorationImage(
-          image: AssetImage(
-            'assets/background/background_home.png',
-          ),
-          fit: BoxFit.cover
-        ),
-      ),
-
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Temukan Ribuan Buku',
-                    style: GoogleFonts.plusJakartaSans(
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white,
-                      fontSize: 26.0
-                    ),
-                  ),
-                  Text(
-                    'Dengan sekali klik',
-                    style: GoogleFonts.plusJakartaSans(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        fontSize: 14.0
-                    ),
-                  )
-                ],
-              ),
+    return InkWell(
+      onTap: (){
+        Get.find<DashboardController>().changeTabIndex(1);
+      },
+      child: Container(
+        width: width,
+        height: 115,
+        decoration: const BoxDecoration(
+          image:  DecorationImage(
+            image: AssetImage(
+              'assets/background/background_home.png',
             ),
+            fit: BoxFit.cover
+          ),
+        ),
 
-            Container(
-              width: 35,
-              height: 35,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Temukan Ribuan Buku',
+                      style: GoogleFonts.plusJakartaSans(
+                        fontWeight: FontWeight.w800,
+                        color: Colors.white,
+                        fontSize: 26.0
+                      ),
+                    ),
+                    Text(
+                      'Dengan sekali klik',
+                      style: GoogleFonts.plusJakartaSans(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontSize: 14.0
+                      ),
+                    )
+                  ],
+                ),
               ),
-              child: const Icon(
-                Icons.navigate_next_rounded,
-                color: Colors.black,
-                size: 35,
-              ),
-            )
-          ],
+
+              Container(
+                width: 35,
+                height: 35,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: const Icon(
+                  Icons.navigate_next_rounded,
+                  color: Colors.black,
+                  size: 35,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -333,7 +339,7 @@ class HomeView extends GetView<HomeController> {
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Container(
+                          child: SizedBox(
                             width: 140,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -603,7 +609,7 @@ class HomeView extends GetView<HomeController> {
                                 Flexible(
                                   flex: 3,
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 10),
+                                    padding: const EdgeInsets.symmetric(vertical: 20),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -624,7 +630,7 @@ class HomeView extends GetView<HomeController> {
                                             fontWeight: FontWeight.w500,
                                             fontSize: 12.0,
                                           ),
-                                          maxLines: 5,
+                                          maxLines: 3,
                                           textAlign: TextAlign.justify,
                                           overflow: TextOverflow.ellipsis,
                                         ),

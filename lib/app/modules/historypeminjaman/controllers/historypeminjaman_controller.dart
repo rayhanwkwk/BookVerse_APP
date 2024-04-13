@@ -80,18 +80,14 @@ class HistorypeminjamanController extends GetxController with StateMixin{
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          titleTextStyle: GoogleFonts.inriaSans(
-            fontWeight: FontWeight.w800,
-            fontSize: 20.0,
-            color: const Color(0xFF56526F),
-          ),
-          backgroundColor: const Color(0xFFF5F5F5),
+          backgroundColor: const Color(0xFFFFFFff),
           title: Text(
             'Berikan Ulasan Buku',
-            style: GoogleFonts.inriaSans(
+            textAlign: TextAlign.center,
+            style: GoogleFonts.plusJakartaSans(
               fontWeight: FontWeight.w800,
               fontSize: 20.0,
-              color: const Color(0xFF56526F),
+              color: Colors.black,
             ),
           ),
 
@@ -103,9 +99,18 @@ class HistorypeminjamanController extends GetxController with StateMixin{
                 child: ListBody(
                   children: <Widget>[
 
+                    Divider(
+                      height: 2,
+                      color: Colors.grey.withOpacity(0.20),
+                    ),
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+
                     Text(
                       'Rating Buku',
-                      style: GoogleFonts.averiaGruesaLibre(
+                      style: GoogleFonts.plusJakartaSans(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
@@ -115,20 +120,22 @@ class HistorypeminjamanController extends GetxController with StateMixin{
                       height: 10,
                     ),
 
-                    RatingBar.builder(
-                      allowHalfRating: false,
-                      itemCount: 5,
-                      minRating: 1,
-                      initialRating: 5,
-                      direction: Axis.horizontal,
-                      itemSize: 30,
-                      itemBuilder: (context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
+                    Center(
+                      child: RatingBar.builder(
+                        allowHalfRating: false,
+                        itemCount: 5,
+                        minRating: 1,
+                        initialRating: 5,
+                        direction: Axis.horizontal,
+                        itemSize: 50,
+                        itemBuilder: (context, _) => const Icon(
+                          Icons.star,
+                          color: Color(0xFFFD5B35),
+                        ),
+                        onRatingUpdate: (double value) {
+                          ratingBuku = value;
+                        },
                       ),
-                      onRatingUpdate: (double value) {
-                        ratingBuku = value;
-                      },
                     ),
 
                     const SizedBox(
@@ -137,7 +144,7 @@ class HistorypeminjamanController extends GetxController with StateMixin{
 
                     Text(
                       'Ulasan Buku',
-                      style: GoogleFonts.averiaGruesaLibre(
+                      style: GoogleFonts.plusJakartaSans(
                           fontSize: 14.0,
                           fontWeight: FontWeight.w600,
                           color: Colors.black),
@@ -148,7 +155,7 @@ class HistorypeminjamanController extends GetxController with StateMixin{
                     ),
 
                     CustomTextField(
-                      preffixIcon: const Icon(Icons.reviews_rounded),
+                      preffixIcon: const Icon(Icons.rate_review_rounded),
                       onChanged: (value){
 
                       },
@@ -179,7 +186,8 @@ class HistorypeminjamanController extends GetxController with StateMixin{
                   child: TextButton(
                     autofocus: true,
                     style: TextButton.styleFrom(
-                      backgroundColor: Colors.black,
+                      backgroundColor: const Color(0xFFFD5B35),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       animationDuration: const Duration(milliseconds: 300),
                     ),
                     onPressed: (){
@@ -187,11 +195,11 @@ class HistorypeminjamanController extends GetxController with StateMixin{
                       Navigator.of(Get.context!).pop();
                     },
                     child: Text(
-                      'Simpan Ulasan Buku',
-                      style: GoogleFonts.averiaGruesaLibre(
+                      'Save Review Book',
+                      style: GoogleFonts.plusJakartaSans(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w900,
-                        color: const Color(0xFF008A93),
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -225,7 +233,6 @@ class HistorypeminjamanController extends GetxController with StateMixin{
               colorText: Colors.white,
               margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10)
           );
-          Navigator.of(Get.context!).pop();
           ulasanController.text = '';
 
         } else {

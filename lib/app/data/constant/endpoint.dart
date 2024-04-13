@@ -26,4 +26,5 @@ class Endpoint {
 
   // Peminjamn
   static const String pinjamBuku = "${baseUrlApi}pinjam";
+  static const String detailPeminjaman = "${baseUrlApi}detail/pinjam";
 }

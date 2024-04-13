@@ -163,7 +163,7 @@ class BookmarkView extends GetView<BookmarkController> {
                     style: GoogleFonts.plusJakartaSans(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -231,7 +231,7 @@ class BookmarkView extends GetView<BookmarkController> {
 
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                  padding: const EdgeInsets.symmetric(vertical: 20),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,9 +261,9 @@ class BookmarkView extends GetView<BookmarkController> {
                                         style: GoogleFonts.plusJakartaSans(
                                           color: textColor,
                                           fontWeight: FontWeight.w500,
-                                          fontSize: 12.0,
+                                          fontSize: 10.0,
                                         ),
-                                        maxLines: 3,
+                                        maxLines: 2,
                                         textAlign: TextAlign.justify,
                                         overflow: TextOverflow.ellipsis,
                                       ),

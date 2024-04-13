@@ -21,7 +21,7 @@ class DashboardView extends GetView<DashboardController> {
               child: Center(
                   child: IndexedStack(
                     index: controller.tabIndex,
-                    children: [
+                    children: const [
                       HomeView(),
                       BookView(),
                       BookmarkView(),

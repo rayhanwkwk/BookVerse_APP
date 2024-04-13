@@ -221,9 +221,9 @@ class BookView extends GetView<BookController> {
                           height: 280,
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
-                            itemCount: bukuList?.length,
+                            itemCount: bukuList.length,
                             itemBuilder: (context, index) {
-                              DataBuku buku = bukuList![index];
+                              DataBuku buku = bukuList[index];
                               return Padding(
                                 padding: const EdgeInsets.only(right: 10.0),
                                 child: InkWell(
