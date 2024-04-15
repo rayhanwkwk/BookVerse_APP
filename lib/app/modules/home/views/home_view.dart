@@ -74,99 +74,106 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
 
-      body: SizedBox(
-        width: width,
-        height: height,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
+      body: RefreshIndicator(
+        color: primary,
+        backgroundColor: Colors.black,
+        onRefresh: () async{
+          await controller.getData();
+        },
+        child: SizedBox(
+          width: width,
+          height: height,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
 
-              Container(
-                width: width,
-                color: colorButton,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.03, vertical: height * 0.030),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello,',
-                        style: GoogleFonts.plusJakartaSans(
-                          color: textColor,
-                          fontWeight: FontWeight.w800,
-                          fontSize: h1,
-                        ),
-                      ),
-
-                      Text(
-                        usernameUser,
-                        style: GoogleFonts.plusJakartaSans(
-                          color: textColor,
-                          fontWeight: FontWeight.w800,
-                          fontSize: h1,
-                        ),
-                      ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      Obx(() {
-                        final currentIndex = controller.currentIndex.value;
-                        final isPrimaryColor = currentIndex % 2 == 0;
-
-                        return FittedBox(
-                          child: Text(
-                            controller.textList[currentIndex],
-                            style: GoogleFonts.plusJakartaSans(
-                              fontSize: text,
-                              fontWeight: FontWeight.w500,
-                              color: isPrimaryColor ? primary : textDeskripsi,
-                            ),
+                Container(
+                  width: width,
+                  color: colorButton,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width * 0.03, vertical: height * 0.030),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hello,',
+                          style: GoogleFonts.plusJakartaSans(
+                            color: textColor,
+                            fontWeight: FontWeight.w800,
+                            fontSize: h1,
                           ),
-                        );
-                      }
+                        ),
+
+                        Text(
+                          usernameUser,
+                          style: GoogleFonts.plusJakartaSans(
+                            color: textColor,
+                            fontWeight: FontWeight.w800,
+                            fontSize: h1,
+                          ),
+                        ),
+
+                        const SizedBox(
+                          height: 10,
+                        ),
+
+                        Obx(() {
+                          final currentIndex = controller.currentIndex.value;
+                          final isPrimaryColor = currentIndex % 2 == 0;
+
+                          return FittedBox(
+                            child: Text(
+                              controller.textList[currentIndex],
+                              style: GoogleFonts.plusJakartaSans(
+                                fontSize: text,
+                                fontWeight: FontWeight.w500,
+                                color: isPrimaryColor ? primary : textDeskripsi,
+                              ),
+                            ),
+                          );
+                        }
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  height: height * 0.020,
+                ),
+
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                          child: sectionImage()
                       ),
+
+                      SizedBox(
+                        height: height * 0.020,
+                      ),
+
+                      sectionBukuPopular(),
+
+                      SizedBox(
+                        height: height * 0.030,
+                      ),
+
+                      sectionListAuthor(),
+
+                      SizedBox(
+                        height: height * 0.040,
+                      ),
+
+                      sectionListBuku(),
                     ],
                   ),
                 ),
-              ),
-
-              SizedBox(
-                height: height * 0.020,
-              ),
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: width * 0.03),
-                child: Column(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                        child: sectionImage()
-                    ),
-
-                    SizedBox(
-                      height: height * 0.020,
-                    ),
-
-                    sectionBukuPopular(),
-
-                    SizedBox(
-                      height: height * 0.030,
-                    ),
-
-                    sectionListAuthor(),
-
-                    SizedBox(
-                      height: height * 0.040,
-                    ),
-
-                    sectionListBuku(),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       )

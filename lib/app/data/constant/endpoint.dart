@@ -1,5 +1,6 @@
 class Endpoint {
   static const String baseUrlApi =
+  // Ganti alamat ip dengan alamat ip kalian di cmd
       "http://192.168.43.21:8000/api/users/";
 
   // Auth

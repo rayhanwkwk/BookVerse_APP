@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 import '../../../data/constant/endpoint.dart';
-import '../../../data/model/response_koleksi_book.dart';
+import '../../../data/model/buku/response_koleksi_book.dart';
 import '../../../data/provider/api_provider.dart';
 import '../../../data/provider/storage_provider.dart';
 

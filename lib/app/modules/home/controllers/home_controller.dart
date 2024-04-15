@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
-import 'package:rayhan_bookverse/app/data/model/response_book_new.dart';
+import 'package:rayhan_bookverse/app/data/model/buku/response_book_new.dart';
 
 import '../../../data/constant/endpoint.dart';
-import '../../../data/model/response_popular_book.dart';
+import '../../../data/model/buku/response_popular_book.dart';
 import '../../../data/provider/api_provider.dart';
 
 class HomeController extends GetxController with StateMixin {
@@ -49,6 +49,8 @@ class HomeController extends GetxController with StateMixin {
   }
 
   Future<void> getData() async {
+    newBooks.clear();
+    popularBooks.clear();
     change(null, status: RxStatus.loading());
 
     try {

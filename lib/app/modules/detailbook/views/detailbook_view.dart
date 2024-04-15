@@ -377,16 +377,44 @@ class DetailbookView extends GetView<DetailbookController> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      'Ulasan Buku',
-                      style: GoogleFonts.inter(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: -0.3,
-                        height: 1.6,
-                        fontSize: 20,
-                      ),
-                      textAlign: TextAlign.start,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Ulasan Buku',
+                          style: GoogleFonts.inter(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: -0.3,
+                            height: 1.6,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.start,
+                        ),
+
+                        TextButton(
+                          onPressed: (){
+                            showModalBottomSheet(
+                                context: Get.context!,
+                                builder: (BuildContext context){
+                                  return moreUlasan(dataUlasan);
+                                }
+                            );
+                          },
+                          child: Text(
+                            'Baca Selengkapnya',
+                            style: GoogleFonts.inter(
+                              color: const Color(0xFFFD5B35),
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -0.3,
+                              height: 1.6,
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.start,
+                          ),
+                        )
+                      ],
                     ),
                   ),
 
@@ -415,7 +443,7 @@ class DetailbookView extends GetView<DetailbookController> {
         ? ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: ulasanList.length,
+      itemCount: ulasanList.length > 5 ? 5 : ulasanList.length,
       itemBuilder: (context, index) {
         Ulasan ulasan = ulasanList[index];
         return Padding(
@@ -539,6 +567,157 @@ class DetailbookView extends GetView<DetailbookController> {
           fontWeight: FontWeight.w500,
           color: Colors.black,
           fontSize: 14.0,
+        ),
+      ),
+    );
+  }
+
+  Widget moreUlasan(List<Ulasan>? ulasanList) {
+    final width = MediaQuery.of(Get.context!).size.width;
+
+    return Container(
+      width: width,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        )
+      ),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: ulasanList != null && ulasanList.isNotEmpty
+              ? ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: ulasanList.length,
+            itemBuilder: (context, index) {
+              Ulasan ulasan = ulasanList[index];
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFFFFFFF),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: const Color(0xFF424242).withOpacity(0.10),
+                        width: 0.5,
+                      )
+                  ),
+                  width: width,
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Center(
+                              child: SizedBox(
+                                width: 35,
+                                height: 35,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child: Image.asset(
+                                    "assets/avatar/Avatar3.png",
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            SizedBox(
+                              width: width * 0.025,
+                            ),
+
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          ulasan.users?.username ?? '',
+                                          style: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.black,
+                                              fontSize: 14),
+                                        ),
+
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+
+                                        // Menampilkan rating di bawah teks penulis
+                                        SizedBox(
+                                          child: RatingBarIndicator(
+                                            direction: Axis.horizontal,
+                                            rating: ulasan.rating!.toDouble(),
+                                            itemCount: 5,
+                                            itemSize: 14,
+                                            itemBuilder: (context, _) => const Icon(
+                                              Icons.star,
+                                              color: Color(0xFFFD5B35),
+                                            ),
+                                          ),
+                                        ),
+
+                                      ],
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(
+                          height: 5,
+                        ),
+
+                        Text(
+                          ulasan.ulasan!,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFFB9B6B6),
+                              fontSize: 13),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+          )
+              : Container(
+            width: width,
+            padding: const EdgeInsets.all(17),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: const Color(0xFF424242).withOpacity(0.01),
+                width: 0.5,
+              ),
+            ),
+            child: Text(
+              'Belum ada ulasan buku',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+                fontSize: 14.0,
+              ),
+            ),
+          ),
         ),
       ),
     );
