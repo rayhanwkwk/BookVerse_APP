@@ -623,6 +623,7 @@ class HomeView extends GetView<HomeController> {
                                       children: [
                                         Text(
                                           buku.judulBuku!,
+                                          maxLines: 2,
                                           style: GoogleFonts.plusJakartaSans(
                                             fontWeight: FontWeight.w700,
                                             color: const Color(0xFF121212),
@@ -637,7 +638,7 @@ class HomeView extends GetView<HomeController> {
                                             fontWeight: FontWeight.w500,
                                             fontSize: 12.0,
                                           ),
-                                          maxLines: 3,
+                                          maxLines: 2,
                                           textAlign: TextAlign.justify,
                                           overflow: TextOverflow.ellipsis,
                                         ),
