@@ -83,7 +83,7 @@ class BookView extends GetView<BookController> {
                 ),
 
                 Text(
-                  'Search',
+                    'Cari buku yang kamu inginkan',
                   style: GoogleFonts.plusJakartaSans(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,

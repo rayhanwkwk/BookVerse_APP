@@ -580,7 +580,6 @@ class HomeView extends GetView<HomeController> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
-                                // Gambar di sebelah kiri
                                 Flexible(
                                   flex:2,
                                   child: Padding(
